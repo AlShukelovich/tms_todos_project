@@ -1,0 +1,10 @@
+h1 {
+color: green;
+text-decoration-style: solid/*не сработало*/
+}
+button {
+color: white
+height: 20px; /* Высота блока */
+width: 100px; /* Ширина блока */
+background: olive
+}
