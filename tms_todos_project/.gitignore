@@ -1,0 +1,7 @@
+**__pycache__
+.idea
+**.ipynb_checkpoints/
+.env
+**venv/
+/db/*.sqlite3
+*.sqlite3
