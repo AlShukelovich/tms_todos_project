@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todos/', include('todos.urls.urls_for_api')),
     path('todos/forms/', include('todos.urls.urls_for_forms')),
+    path('api/v2/', include('todos.urls.urls_for_serializers')),
 ]
