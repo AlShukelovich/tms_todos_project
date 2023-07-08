@@ -72,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'todos.middlewares.QueryLogsMiddleware',
 ]
 
 ROOT_URLCONF = 'tms_todos_project.urls'
