@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-dmcrj-9ha@0!942%bhpw33hyc2c_tnh!0%jx8xr4dbu)8c*xot
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 ALLOWED_HOSTS = []
 
 
@@ -167,5 +169,9 @@ DEBUG_TOOLBAR_PANELS = [
 
 def show_toolbar(request):
     return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'tms_todos_project.settings.show_toolbar',
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
