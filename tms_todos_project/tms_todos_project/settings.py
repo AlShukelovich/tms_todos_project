@@ -58,8 +58,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
-    'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 15,
-    'DEFAULT_CACHE_BACKEND': 'default',
 }
 
 SIMPLE_JWT = {
