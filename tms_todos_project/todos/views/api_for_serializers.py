@@ -2,10 +2,10 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions, filters, generics
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from todos.models import Todo
 from todos.serializers import TodoSerializer
+
 
 class TodoViewSet(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
@@ -17,10 +17,12 @@ class TodoViewSet(viewsets.ModelViewSet):
     search_fields = ['id', 'title', 'description']
 
 
-class TodoListViewSet(APIView):
-    @method_decorator(cache_page(60*60*2))
-    def get(self, request, format=None):
-        content = {
+class TodoListViewSet(generics.ListAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
 
-        }
-        return Response(content)
+    @method_decorator(cache_page(60 * 60 * 2))
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = TodoSerializer(queryset, many=True)
+        return Response(serializer.data)
