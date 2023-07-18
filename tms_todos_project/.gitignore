@@ -17,3 +17,5 @@ celerybeat-schedule.bak
 *.bak*
 *.dat*
 *.dir*
+celerybeat-schedule.*
+todos_list.*

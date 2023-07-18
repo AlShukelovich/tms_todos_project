@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 CELERY_BROKER_URL = 'sqla+sqlite:///db.sqlite'
+
 CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
 
 
@@ -78,6 +79,7 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
         "LOCATION": "C:/Users/lesia/PycharmProjects/tms_todos_project/tms_todos_project\cache",
+        #"LOCATION": "cache",
     }
 }
 
