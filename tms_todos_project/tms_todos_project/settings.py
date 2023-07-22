@@ -43,7 +43,7 @@ CELERY_BEAT_SCHEDULE = {
 
     'create_todos_json': {
         'task': 'todos.tasks.create_file_json',
-        'schedule': crontab()
+        'schedule': crontab(minute=0, hour=0)
     },
 }
 
