@@ -18,7 +18,7 @@ def logging_task(params=None):
 @app.task
 def create_todos():
     with open("todos_list.txt", "w") as new_file:
-        dict_from_db = [todo for todo in Todo.objects.values_list('user', 'title').order_by('user')]
+        dict_from_db = [todo for todo in Todo.objects.values_list('user', 'title').order_by('user').filter(copmlete__exact=1)]
         for i in dict_from_db:
             new_file.write(str(i))
         new_file.close()
