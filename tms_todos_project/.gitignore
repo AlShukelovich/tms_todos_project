@@ -5,4 +5,11 @@
 **venv/
 /db/*.sqlite3
 *.sqlite3
+/db/*.sqlite
+*.sqlite
 cache
+celerybeat-schedule.*
+todos_list.*
+*.json
+*.csv
+*.txt
