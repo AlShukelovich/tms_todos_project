@@ -16,7 +16,7 @@ def logging_task(params=None):
 
 
 @app.task
-def create_todos():
+def create_file_txt():
     with open("todos_list.txt", "w") as new_file:
         dict_from_db = [todo for todo in Todo.objects.values_list('user', 'title').order_by('user').filter(copmlete__exact=1)]
         for i in dict_from_db:
@@ -24,7 +24,7 @@ def create_todos():
         new_file.close()
 
 @app.task
-def create_todos_json():
+def create_file_json():
     with open(f"todos_list.json", "w+") as new_file:
         dict_from_db = [model_to_dict(todo) for todo in Todo.objects.filter(title__exact='todo2')]
         json.dump(str(dict_from_db), new_file)

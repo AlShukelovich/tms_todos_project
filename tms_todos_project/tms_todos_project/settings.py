@@ -37,13 +37,13 @@ CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
 
 CELERY_BEAT_SCHEDULE = {
    'create_todos': {
-        'task': 'todos.tasks.create_todos',
+        'task': 'todos.tasks.create_file_txt',
         'schedule': 5
     },
 
     'create_todos_json': {
-        'task': 'todos.tasks.create_todos_json',
-        'schedule': crontab(minute=0, hour=0)
+        'task': 'todos.tasks.create_file_json',
+        'schedule': crontab()
     },
 }
 
