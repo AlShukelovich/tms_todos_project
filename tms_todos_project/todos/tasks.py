@@ -4,10 +4,9 @@ from celery import shared_task
 from django.forms import model_to_dict
 
 from tms_todos_project.celery import app
-#from tms_todos_project.celery import app
-#from tms_todos_project.tms_todos_project.celery import app
+
 from todos.models import Todo
-from todos.serializers import TodoSerializer
+
 
 
 @shared_task()
@@ -18,6 +17,14 @@ def logging_task(params=None):
 
 @app.task
 def create_todos():
-    with open("todos_list.json", "w+") as new_file:
+    with open("todos_list.txt", "w") as new_file:
+        dict_from_db = [todo for todo in Todo.objects.values_list('user', 'title').order_by('user')]
+        for i in dict_from_db:
+            new_file.write(str(i))
+        new_file.close()
+
+@app.task
+def create_todos_json():
+    with open(f"todos_list.json", "w+") as new_file:
         dict_from_db = [model_to_dict(todo) for todo in Todo.objects.filter(title__exact='todo2')]
-        json.dump(dict_from_db, new_file)
+        json.dump(str(dict_from_db), new_file)

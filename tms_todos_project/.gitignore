@@ -8,14 +8,8 @@
 /db/*.sqlite
 *.sqlite
 cache
-*.bak
-*.dat
-*.dir
-celerybeat-schedule.dir
-celerybeat-schedule.dat
-celerybeat-schedule.bak
-*.bak*
-*.dat*
-*.dir*
 celerybeat-schedule.*
 todos_list.*
+*.json
+*.csv
+*.txt

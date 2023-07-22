@@ -9,12 +9,15 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os.path
 from datetime import timedelta
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+CACHE_DIR = os.path.join(BASE_DIR, 'cache')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -29,14 +32,18 @@ ALLOWED_HOSTS = []
 
 
 CELERY_BROKER_URL = 'sqla+sqlite:///db.sqlite'
-
 CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
 
 
 CELERY_BEAT_SCHEDULE = {
-    'create_posts': {
+   'create_todos': {
         'task': 'todos.tasks.create_todos',
-        'schedule': 5,
+        'schedule': 5
+    },
+
+    'create_todos_json': {
+        'task': 'todos.tasks.create_todos_json',
+        'schedule': crontab(minute=0, hour=0)
     },
 }
 
@@ -78,8 +85,7 @@ SIMPLE_JWT = {
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": "C:/Users/lesia/PycharmProjects/tms_todos_project/tms_todos_project\cache",
-        #"LOCATION": "cache",
+        "LOCATION": CACHE_DIR,
     }
 }
 

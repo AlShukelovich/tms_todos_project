@@ -8,5 +8,5 @@ class Todo(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # copmlete = models.BooleanField(default=datetime.datetime.utcnow())
-    # copmlete = models.BooleanField(default=datetime.datetime.now(datetime.timezone.utc))
+    copmlete = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now())
